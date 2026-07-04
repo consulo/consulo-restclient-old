@@ -24,6 +24,7 @@ import consulo.restclient.ui.RestClientPanel;
 import consulo.ui.annotation.RequiredUIAccess;
 import consulo.ui.ex.action.AnAction;
 import consulo.ui.ex.action.AnActionEvent;
+import consulo.ui.ex.action.AnActionWithSyncUpdate;
 import consulo.ui.ex.awt.Messages;
 import org.wiztools.restclient.bean.RequestBean;
 
@@ -32,7 +33,7 @@ import org.wiztools.restclient.bean.RequestBean;
  * @since 20.11.13.
  */
 @ActionImpl(id = "RESTClientToolbarActions.Save")
-public class SaveAction extends AnAction
+public class SaveAction extends AnAction implements AnActionWithSyncUpdate
 {
 	public SaveAction()
 	{
@@ -65,7 +66,6 @@ public class SaveAction extends AnAction
 	@Override
 	public void update(AnActionEvent e)
 	{
-		super.update(e);
 		Project project = e.getData(Project.KEY);
 		if(project == null)
 		{
